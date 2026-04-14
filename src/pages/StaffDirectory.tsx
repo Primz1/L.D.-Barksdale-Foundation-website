@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { motion } from 'framer-motion'
@@ -10,7 +11,6 @@ import { FOUNDATION_INFO } from '../constants/content'
 gsap.registerPlugin(ScrollTrigger)
 
 const StaffDirectory = () => {
-  const containerRef = useRef<HTMLDivElement>(null)
   const boardCardsRef = useRef<HTMLDivElement>(null)
   const advisoryCardsRef = useRef<HTMLDivElement>(null)
   const [expandedCard, setExpandedCard] = useState<number | null>(null)
@@ -59,7 +59,7 @@ const StaffDirectory = () => {
     }
   }, [])
 
-  const CardComponent = ({ member, index, type = 'board' }: any) => {
+  const CardComponent = ({ member, type = 'board' }: any) => {
     const className = type === 'board' ? 'board-card' : 'advisory-card'
     
     return (
@@ -103,7 +103,7 @@ const StaffDirectory = () => {
       />
 
       {/* Management Team */}
-      <Section gradient="from-transparent via-primary-100/30 to-transparent">
+      <Section>
         <div className="container-max">
           <SectionHeading
             title="Executive Team"
@@ -167,7 +167,7 @@ const StaffDirectory = () => {
       </Section>
 
       {/* Community Advisory Board */}
-      <Section gradient="from-transparent via-primary-100/30 to-transparent">
+      <Section>
         <div className="container-max">
           <SectionHeading
             title="Community Advisory Board"
@@ -190,11 +190,16 @@ const StaffDirectory = () => {
       <SectionCTA
         title="Join Our Leadership"
         description="We're always looking for passionate individuals to serve on our committees and help guide our mission forward."
-        primaryButtonText="Get Involved"
-        primaryButtonLink="/contact#volunteer"
-        secondaryButtonText="Learn More"
-        secondaryButtonLink="/about"
-      />
+      >
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+          <Link to="/contact#volunteer" className="btn-primary">
+            Get Involved
+          </Link>
+          <Link to="/about" className="btn-secondary">
+            Learn More
+          </Link>
+        </div>
+      </SectionCTA>
     </div>
   )
 }

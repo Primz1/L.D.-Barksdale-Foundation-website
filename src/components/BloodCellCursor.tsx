@@ -135,7 +135,6 @@ export const BloodCellCursor: React.FC = () => {
       } else {
         // Idle sine wave animation
         const angleSpeed = 0.05;
-        const range = RADIUS * dot.scale;
         const angle = (Date.now() * 0.001 + index * 0.5) % (Math.PI * 2);
         dot.y += Math.sin(angle) * angleSpeed;
         dot.x += Math.cos(angle) * angleSpeed;
