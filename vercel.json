@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm ci",
+  "outputDirectory": "dist",
+  "env": {
+    "VITE_API_URL": {
+      "description": "API URL for the application",
+      "value": "https://api.example.com"
+    }
+  }
+}
